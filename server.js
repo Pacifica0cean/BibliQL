@@ -2,9 +2,16 @@ const express = require('express');
 const expressGraphQL = require('express-graphql');
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./schema/schema');
+const mongo = require('mongoose');
 
 // Change this port if you want! It will simply replicate to the listen port on express.
 const exp_port = 51115;
+
+// Setup of Mongoose, aka MongoDB. Change to your own Mongo URL!
+const MDBURL = '';
+if (!MDBURL) {
+    throw new Error("Please input a Mongo DB URL with a valid account to proceed with Mongo DB initialization.");
+};
 
 
 // Setup Express to use /graphql endpoint, running off the 'graphqlHTTP' glue for express graphql.
